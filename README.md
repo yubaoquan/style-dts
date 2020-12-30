@@ -11,7 +11,7 @@ Right click on style file(.css/.less/.sass/.scss) or their folder in file explor
 - Generate .d.ts file for signle style file;
 - Generate .d.ts files for files in a folder;
 
-![demo](type-gen.gif)
+![demo](demo.gif)
 
 ## Extension Settings
 
