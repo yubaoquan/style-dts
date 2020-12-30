@@ -1,45 +1,76 @@
 {
-	"name": "style-dts",
-	"displayName": "style-dts",
-	"description": "Generate .d.ts files for css/less/sass files.",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.52.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onCommand:style-dts.helloWorld"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "style-dts.helloWorld",
-                "title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
-		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.52.0",
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^7.0.2",
-		"@types/node": "^13.11.0",
-		"eslint": "^6.8.0",
-		"@typescript-eslint/parser": "^2.26.0",
-		"@typescript-eslint/eslint-plugin": "^2.26.0",
-		"glob": "^7.1.6",
-		"mocha": "^7.1.1",
-		"typescript": "^3.8.3",
-		"vscode-test": "^1.3.0"
-	}
+  "name": "style-dts",
+  "displayName": "style-dts",
+  "description": "Generate .d.ts files for css/less/sass files.",
+  "version": "0.0.0",
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:style-dts.batchGenDts",
+    "onCommand:style-dts.singleGenDts"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "style-dts.batchGenDts",
+        "title": "Generate style type files"
+      },
+      {
+        "command": "style-dts.singleGenDts",
+        "title": "Generate style type file"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "style-dts.batchGenDts",
+          "group": "7_modification"
+        },
+        {
+          "when": "resourceExtname =~ /.(css|less|sass)$/",
+          "command": "style-dts.singleGenDts",
+          "group": "7_modification"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "@types/vscode": "^1.52.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-airbnb-typescript": "^11.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.1.1",
+    "typescript": "^4.0.3",
+    "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "less": "^4.0.0",
+    "node-sass": "^4.14.0",
+    "readdirp": "^3.5.0",
+    "sass": "^1.32.0",
+    "typed-less-modules": "^1.0.1",
+    "typed-scss-modules": "^3.4.0"
+  }
 }

@@ -1,19 +1,81 @@
 {
-    "root": true,
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint"
+  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb-typescript/base"],
+  "plugins": ["@typescript-eslint"],
+  "globals": {
+    "Deno": "readonly"
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".mjs"],
+    "ecmaVersion": 2020,
+    "createDefaultProgram": true
+  },
+  "rules": {
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "as-needed"],
+    "brace-style": ["error", "1tbs"],
+    "comma-dangle": ["error", "always-multiline"],
+    "consistent-return": "off",
+    "curly": ["error", "multi-line"],
+    "func-names": "off",
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "max-len": ["error", { "code": 100, "ignoreComments": true }],
+    "max-statements-per-line": ["error", { "max": 1 }],
+    "no-console": "off",
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "no-continue": "off",
+    "no-mixed-operators": ["error", { "allowSamePrecedence": true }],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": "off",
+    "no-return-assign": ["error", "except-parens"],
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "nonblock-statement-body-position": ["error", "beside"],
+    "prefer-destructuring": ["error", {"object": true, "array": false}],
+    "implicit-arrow-linebreak": "off",
+
+    "lines-around-comment": ["error", {
+      "beforeBlockComment": true,
+      "beforeLineComment": true,
+      "allowBlockStart": true,
+      "allowClassStart": true,
+      "allowObjectStart": true,
+      "allowArrayStart": true
+    }],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "export" },
+      { "blankLine": "always", "prev": "import", "next": "*" },
+      { "blankLine": "any", "prev": "import", "next": "import" },
+      { "blankLine": "any", "prev": "export", "next": "export" }
     ],
-    "rules": {
-        "@typescript-eslint/class-name-casing": "warn",
-        "@typescript-eslint/semi": "warn",
-        "curly": "warn",
-        "eqeqeq": "warn",
-        "no-throw-literal": "warn",
-        "semi": "off"
-    }
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+
+    "@typescript-eslint/no-loop-func":"off",
+    "@typescript-eslint/no-extra-parens": ["error"],
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "@typescript-eslint/type-annotation-spacing": ["error",
+      {
+        "before": false,
+        "after": true,
+        "overrides": {
+          "arrow": {
+            "before": true,
+            "after": true
+          }
+        }
+      }
+    ],
+    "@typescript-eslint/space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }]
+  }
 }
